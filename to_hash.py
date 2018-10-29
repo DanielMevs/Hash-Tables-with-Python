@@ -12,27 +12,24 @@ ls = to_hash(d, f,5)
 print("hashed keys:", ls)
 
 
-def lookup (ls,element,x=0,y=0):
+def look_up (ls,element,x=0,y=0):
     '''takes  hash table and an element
     returns the element's index'''
     if not ls[x]:
-        return lookup(ls,element,x+1,0)
+        return look_up(ls,element,x+1,0)
     if ls[x][y]==element:
         return (x,y)
     elif y==len(ls[x])-1:
-        return lookup(ls,element,x+1,0)
-    return lookup(ls,element,x,y+1)
+        return look_up(ls,element,x+1,0)
+    return look_up(ls,element,x,y+1)
 
 sorted_ls = []
 new_dict = {}
 for i in d:
-    sub_tup = lookup(ls, i)
+    sub_tup = look_up(ls, i)
     new_dict.update({sub_tup: i})
-    sorted_ls.append(lookup(ls, i))
+    sorted_ls.append(look_up(ls, i))
 
-
-
-    
 def ascendingSort(arr, N):
     #print("Original array: ", arr)
     n = N-1
